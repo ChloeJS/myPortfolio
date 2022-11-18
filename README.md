@@ -1,6 +1,6 @@
 # myPortfolio
 
-<img src="https://img.shields.io/badge/Android-3DDC84?style=flat-square&logo=Android&logoColor=white"/>
+<img src="https://img.shields.io/badge/Java-3DDC84?style=flat-square&logo=Android&logoColor=white"/>
 
 #### 개인 프로젝트 : WELCOME, JISU's & BMM
 #### 진행 상태 : 2022.09 ~ 구현 진행 중
