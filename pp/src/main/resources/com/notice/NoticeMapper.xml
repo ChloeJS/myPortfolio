@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.notice.NoticeMapper">
+
+	<!-- 등록 insert -->
+	<insert id="insert" parameterType="com.notice.NoticeVO">
+		INSERT INTO noticeboard (
+			 notice_title, notice_content, notice_regdate, notice_writer, notice_viewcount, file_no
+    		) values (
+    			 #{notice_title}, #{notice_content}, now(), #{notice_writer}, #{notice_viewcount}, #{file_no}
+    		)
+    	<selectKey keyProperty="notice_no" resultType="int" order="AFTER">
+			SELECT LAST_INSERT_ID()
+		</selectKey>
+	</insert>
+	
+	
+	<!-- 파일 등록 insert_file -->
+	<insert id="insert_file" parameterType="com.file.FileVO">
+		INSERT INTO file (
+			no, filename_org, filename_real, file_type, fileOrder
+		) VALUES (
+			#{no}, #{filename_org}, #{filename_real}, #{file_type}, #{fileOrder}
+		)
+	</insert>
+	
+	
+	<!-- 목록 list -->
+	<select id="list" parameterType="com.notice.NoticeVO" resultType="com.notice.NoticeVO">
+		 SELECT * FROM noticeboard 
+		 ORDER BY notice_regdate DESC
+	</select>
+	
+	
+	<!-- 파일 목록조회 -->
+	<select id="get_fileList" parameterType="com.file.FileVO" resultType="com.file.FileVO">
+		SELECT * FROM file
+		WHERE no = #{no} and file_type = #{file_type}
+		ORDER BY fileOrder
+	</select>
+	
+	
+	<!-- 페이징 getListPage -->
+	<select id="getListPage" parameterType="com.notice.NoticeVO" resultType="com.notice.NoticeVO"> <!-- 결과데이터를 어떻게 처리해줘야할지 명시해야함 -->
+		<!-- 부등호 등 문제를 xml에서 사용할 수 있는 CDATA 섹션을 통해 처리해준다. -->
+		<![CDATA[
+		SELECT *
+			FROM noticeboard
+			ORDER BY notice_regdate DESC
+			LIMIT ${startIdx}, ${pageRow}
+		]]>
+	</select>
+	
+	
+	<!-- 총 개수 체크 count -->
+	<select id="totalCount" parameterType="com.notice.NoticeVO" resultType="int">
+		<![CDATA[
+			SELECT COUNT(*) FROM noticeboard WHERE notice_no > 0
+		]]>
+	</select>
+	
+	
+	<!-- 상세보기 view-->
+	<select id="view" parameterType="int" resultType="com.notice.NoticeVO">
+		SELECT * FROM noticeboard WHERE notice_no = #{notice_no}
+	</select>
+	
+	
+	<!-- 조회수 증가 udpateViewcount -->
+	<update id="updateViewcount" parameterType="int">
+		UPDATE noticeboard SET notice_viewcount = notice_viewcount +1 WHERE notice_no = #{notice_no}
+	</update>
+	
+	
+	<!-- 수정 update -->
+	<update id="update" parameterType="com.notice.NoticeVO">
+		UPDATE noticeboard SET 
+			notice_title = #{notice_title}, 
+			notice_content = #{notice_content},
+			filename_org = #{filename_org},
+			filename_real = #{filename_real}
+		WHERE notice_no = #{notice_no}
+	</update>
+	
+	
+	<!-- 삭제 delete -->
+	<delete id="delete" parameterType="int">
+		DELETE FROM noticeboard 
+		WHERE notice_no = #{notice_no}
+	</delete>
+	
+	<!-- 파일 삭제 delete_file -->
+	<delete id="delete_file" parameterType="int">
+		DELETE FROM file 
+		WHERE file_no = #{file_no}
+	</delete>
+	
+</mapper>
+

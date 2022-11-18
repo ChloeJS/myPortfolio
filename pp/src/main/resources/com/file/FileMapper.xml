@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.file.FileMapper">
+
+	<!-- 파일 등록 insert_file -->
+	<insert id="insert_file" parameterType="com.file.FileVO">
+		INSERT INTO file ( 
+			filename_org, filename_real, file_type, file_typeNo, fileOrder_perType
+		) VALUES (
+			#{filename_org}, #{filename_real}, #{file_type}, #{file_typeNo}, #{fileOrder_perType}
+		)
+	</insert>
+	
+	<!-- 파일 리스트  get_fileList -->
+	<select id="get_fileList" parameterType="com.file.FileVO" resultType="com.file.FileVO">
+		SELECT * FROM file
+		WHERE file_no = #{file_no}
+	</select>
+	
+	
+	<!-- 파일 삭제 delete_file -->
+	<delete id="delete_file" parameterType="com.file.FileVO">
+		DELETE FROM file WHERE file_no = #{file_no} 
+	</delete>
+	
+</mapper>
+

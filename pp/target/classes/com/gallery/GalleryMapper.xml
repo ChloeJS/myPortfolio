@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gallery.GalleryMapper">
+
+	<!-- 등록 insert -->
+	<insert id="insert" parameterType="com.gallery.GalleryVO">
+		INSERT INTO gallery (
+		gallery_title, gallery_content, gallery_regdate, user_no, user_name, filename_org, filename_real, price
+		) values (
+		#{gallery_title}, #{gallery_content}, now(), #{user_no}, #{user_name}, #{filename_org}, #{filename_real}, #{price}
+		)
+
+	</insert>
+
+
+	<!-- 목록 list -->
+	<select id="list" parameterType="com.gallery.GalleryVO" resultType="com.gallery.GalleryVO">
+		SELECT * FROM gallery
+		ORDER BY gallery_regdate DESC
+	</select>
+
+
+
+
+	<!-- 상세 view -->
+	<select id="view" parameterType="int" resultType="com.gallery.GalleryVO">
+		SELECT * FROM gallery WHERE gallery_no = #{gallery_no}
+	</select>
+
+
+
+	<!-- 수정 update -->
+	<update id="update" parameterType="com.gallery.GalleryVO">
+		UPDATE gallery SET
+		gallery_title = #{gallery_title},
+		gallery_content = #{gallery_content},
+		price = #{price}
+		<if test="filename_org != null"> 
+		, filename_org = #{filename_org}
+		, filename_real = #{filename_real}
+		</if>
+		WHERE gallery_no = #{gallery_no}
+	</update>
+
+
+	<!-- 삭제 delete -->
+	<delete id="delete" parameterType="int">
+		DELETE FROM gallery
+		WHERE gallery_no = #{gallery_no}
+	</delete>
+
+
+
+</mapper>
+

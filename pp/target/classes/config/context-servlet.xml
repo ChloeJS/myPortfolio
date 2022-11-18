@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	
+	xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring"
+	xmlns:task="http://www.springframework.org/schema/task"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	
+	xsi:schemaLocation=
+				"http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+				http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+				http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+				http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring-1.2.xsd
+				http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-4.3.xsd
+				http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
+
+	<context:component-scan base-package="main" />
+	<context:component-scan base-package="com" />
+	<context:component-scan base-package="com.gallery" />
+	<context:component-scan base-package="com.board" />
+	<context:component-scan base-package="com.comment" />
+	<context:component-scan base-package="com.reply" />
+	<context:component-scan base-package="com.api" /> 
+	
+	<mvc:annotation-driven/> <!-- annotation 활성화 -->
+	
+	
+ 	<mvc:default-servlet-handler/>
+ 	
+ 	<mvc:view-resolvers>
+ 	    <mvc:jsp prefix="/WEB-INF/view/"/>
+ 	    <mvc:jsp suffix="jsp"/>
+ 	</mvc:view-resolvers>
+ 	
+ 	<bean id="hikariConfig" class="com.zaxxer.hikari.HikariDataSource" > 
+ 		<property name="driverClassName" value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy"/> 
+ 		<property name="jdbcUrl" value="jdbc:log4jdbc:mysql://localhost:3306/pp"/> 
+ 		<property name="username" value="root"/> 
+ 		<property name="password" value="root1234"/> 
+ 	</bean>
+ 	
+ 	 <bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource" destroy-method="close">
+        <constructor-arg ref="hikariConfig"/>
+    </bean>
+ 	
+ 	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionFactoryBean">
+ 		<property name="dataSource" ref="dataSource" />
+ 		<property name="mapperLocations" value="classpath:/mapper/**/*.xml" />
+ 	</bean>
+ 	<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
+ 		<constructor-arg index="0" ref="sqlSession"/>
+ 	</bean>
+	
+	<mybatis-spring:scan base-package="com" annotation="org.apache.ibatis.annotations.Mapper"/>
+	
+	<!-- 파일업로드 -->
+ 	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="defaultEncoding" value="utf-8"/>
+		<property name="maxUploadSize" value="10000000"/>	
+	</bean>
+	
+ 	<!-- 사용자 정적페이지 annotation-driven 세텅해야함
+
+	
+	<mvc:view-controller path="/portfolio/reply/index.do"/>
+	<mvc:view-controller path="/portfolio/reply/view.do"/>
+	<mvc:view-controller path="/portfolio/reply/write.do"/>
+	<mvc:view-controller path="/portfolio/reply/edit.do"/> -->
+</beans>

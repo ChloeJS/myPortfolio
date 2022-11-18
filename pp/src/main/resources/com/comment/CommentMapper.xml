@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.comment.CommentMapper">
+
+	<!-- 댓글 등록 insert -->
+	<!-- 댓글 번호(ai), 내용, 작성자의 회원번호, 특정 게시글의 번호, 댓글 작성일, 특정 게시판의 이름 -->
+	<insert id="insert" parameterType="com.comment.CommentVO">
+		INSERT INTO comment (
+			 comment_content, user_no, user_name, board_no, comment_regdate, tablename 
+    		) values (
+    			#{comment_content}, #{user_no}, #{user_name}, #{board_no}, now(), #{tablename}
+    		)
+    	<selectKey keyProperty="comment_no" resultType="int" order="AFTER">
+			SELECT LAST_INSERT_ID()
+		</selectKey>
+	</insert>
+	
+	
+	<!-- 전체 댓글 수 -->
+	<!-- 어느 게시판에 있는 어떤 게시글의 댓글 수 확인 -->
+	<select id="count" parameterType="com.comment.CommentVO" resultType="java.lang.Integer">
+		SELECT COUNT(*) FROM comment
+		WHERE board_no = #{board_no} AND tablename = #{tablename} 
+	</select>
+	
+	
+	<!-- 페이징 처리 된 목록 getListPage -->
+	<!-- 댓글 목록 list -->
+	<!-- 어느 게시판에 있는 어떤 게시글의 댓글 목록 확인 -->
+	<!-- 댓글 작성자(user_no)와 회원(user)테이블의 회원번호(no)와 같을 때 가져오는 이름이 = user_name -->
+	<!-- 아직 user 테이블이 없어서 일단 전체로 가져온다. -->
+	<select id="getListPage" parameterType="com.comment.CommentVO" resultType="com.comment.CommentVO"> <!-- 결과데이터를 어떻게 처리해줘야할지 명시해야함 -->
+		SELECT *
+			FROM comment
+			WHERE board_no = #{board_no} AND tablename = #{tablename} 
+		ORDER BY comment_regdate DESC
+		LIMIT ${startIdx}, ${pageRow}
+	</select>
+
+	
+	<!-- 댓글 수정 update -->
+	<!-- 어느 게시판에 있는 어떤 게시글의 댓글을 수정할 때, 댓글 내용 및 날짜가 업데이트 -->
+	<update id="update" parameterType="int">
+		UPDATE comment SET 
+			comment_content = #{comment_content},
+			comment_regdate = now()
+		WHERE comment_no = #{comment_no} AND board_no = #{board_no} AND tablename = #{tablename}
+	</update>
+	
+	
+	<!-- 삭제 delete -->
+	<delete id="delete" parameterType="int">
+		DELETE FROM comment 
+		WHERE comment_no = #{comment_no}
+	</delete>
+	
+	
+	<!-- 다중파일때 활용  -->
+	
+	<!-- 파일 등록 insert_file -->
+	<insert id="insert_file" parameterType="com.file.FileVO">
+		INSERT INTO file (
+			no, filename_org, filename_real, file_type, fileOrder
+		) VALUES (
+			#{no}, #{filename_org}, #{filename_real}, #{file_type}, #{fileOrder}
+		)
+	</insert>
+	
+	
+	<!-- 파일 목록조회 -->
+	<select id="get_fileList" parameterType="com.file.FileVO" resultType="com.file.FileVO">
+		SELECT * FROM file
+		WHERE no = #{no} and file_type = #{file_type}
+		ORDER BY fileOrder
+	</select>
+	
+	
+	<!-- 파일 삭제 delete_file -->
+	<delete id="delete_file" parameterType="int">
+		DELETE FROM file 
+		WHERE file_no = #{file_no}
+	</delete>
+	
+	
+</mapper>
+

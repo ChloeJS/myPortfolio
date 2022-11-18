@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.board.BoardMapper">
+
+	<!-- 등록 insert -->
+	<insert id="insert" parameterType="com.board.BoardVO">
+		INSERT INTO board (
+			 title, content, regdate, viewcount, filename_org, filename_real, user_name, user_no, comment_count 
+    		) values (
+    			 #{title}, #{content}, now(), #{viewcount}, #{filename_org}, #{filename_real}, #{user_name}, #{user_no}, #{comment_count}
+    		)
+    	<selectKey keyProperty="no" resultType="int" order="AFTER">
+			SELECT LAST_INSERT_ID()
+		</selectKey>
+	</insert>
+
+	<!-- 삭제 예정 -->
+	<!-- 목록 list -->
+	<select id="list" parameterType="com.board.BoardVO" resultType="com.board.BoardVO">
+		 SELECT *
+		 FROM board 
+		 ORDER BY regdate DESC
+	</select>
+	
+	
+	<!-- 페이징 getListPage -->
+	<!-- 원글의 댓글 수를 출력하기 위해서 -->
+	<select id="getListPage" parameterType="com.board.BoardVO" resultType="com.board.BoardVO"> <!-- 결과데이터를 어떻게 처리해줘야할지 명시해야함 -->
+		SELECT *,
+			( SELECT COUNT(*) FROM comment WHERE no = board.no AND tablename='board') AS comment_count 
+		FROM board
+		ORDER BY regdate DESC
+		LIMIT ${startIdx}, ${pageRow}
+	</select>
+	
+	
+	<!-- 총 개수 체크 count -->
+	<select id="totalCount" parameterType="com.board.BoardVO" resultType="int">
+		<![CDATA[
+			SELECT COUNT(*) FROM board WHERE no > 0
+		]]>
+	</select>
+	
+	
+	<!-- 상세보기 view-->
+	<select id="view" parameterType="int" resultType="com.board.BoardVO">
+		SELECT * FROM board WHERE no = #{no}
+	</select>
+	
+	
+	<!-- 조회수 증가 udpateViewcount -->
+	<update id="updateViewcount" parameterType="int">
+		UPDATE board SET viewcount = viewcount +1 WHERE no = #{no}
+	</update>
+	
+	
+	<!-- 수정 update -->
+	<update id="update" parameterType="com.board.BoardVO">
+		UPDATE board SET 
+			title = #{title}, 
+			content = #{content},
+			filename_org = #{filename_org},
+			filename_real = #{filename_real}
+		WHERE no = #{no}
+	</update>
+	
+	
+	<!-- 삭제 delete -->
+	<delete id="delete" parameterType="int">
+		DELETE FROM board 
+		WHERE no = #{no}
+	</delete>
+	
+	
+	
+	<!-- 다중파일때 활용  -->
+	
+	<!-- 파일 등록 insert_file -->
+	<insert id="insert_file" parameterType="com.file.FileVO">
+		INSERT INTO file (
+			no, filename_org, filename_real, file_type, fileOrder
+		) VALUES (
+			#{no}, #{filename_org}, #{filename_real}, #{file_type}, #{fileOrder}
+		)
+	</insert>
+	
+	<!-- 파일 목록조회 -->
+	<select id="get_fileList" parameterType="com.file.FileVO" resultType="com.file.FileVO">
+		SELECT * FROM file
+		WHERE no = #{no} and file_type = #{file_type}
+		ORDER BY fileOrder
+	</select>
+	
+	
+	<!-- 파일 삭제 delete_file -->
+	<delete id="delete_file" parameterType="int">
+		DELETE FROM file 
+		WHERE file_no = #{file_no}
+	</delete>
+	
+	
+</mapper>
+
