@@ -1,5 +1,7 @@
 # myPortfolio
 
+<img src="https://img.shields.io/badge/Android-3DDC84?style=flat-square&logo=Android&logoColor=white"/>
+
 #### 개인 프로젝트 : WELCOME, JISU's & BMM
 #### 진행 상태 : 2022.09 ~ 구현 진행 중
 #### 소개 :  
@@ -23,3 +25,6 @@
 - (진행중) 관리자 권한으로 처리되는 MEMBER (로그인/회원가입)
 - (예정) Interceptor를 적용한 회원가입, 로그인 구현 ▶ 추후 spring security 도전
 - 페이지 처리, 댓글목록 처리 로직은 재사용/수정이 용이하게 모듈화 처리
+
+#### 기술스택 : 
+- Java, Spring, JavaScript, HTML, CSS, Mybatis, Mysql, jQuery, Ajax, Apache Tomcat, Eclipse etcs
