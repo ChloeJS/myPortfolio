@@ -1,17 +1,20 @@
-# myPortfolio
+
+[![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2FChloeJS%2FmyPortfolio&count_bg=%23EEECE7&title_bg=%236FDFE9&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false)](https://hits.seeyoufarm.com)
 
 
+### 😉 개인 프로젝트 : WELCOME, JISU's & BMM
+<br>
 
-### 개인 프로젝트 : WELCOME, JISU's & BMM
-
-### 진행 상태 : 2022.09 ~ 구현 진행 중
+### 진행 기 : 2022.09 ~ 구현 진행 중
+<br>
 
 ### 소개 :  
 - 팀프로젝트에서 구현해보지 못한 기능들을 적용해보는 개인 프로젝트입니다. 
 - 학습한 내용들도 업로드해놓았습니다.
 - "BMM"은 최종적으로 쇼핑몰 사이트로 구현할 예정입니다. 
+<br>
 
-### 상세내용: 
+### ⚙ 상세내용: 
 #### 1. 기본
 - (예정) 자기 소개 이미지 슬라이드 기능 (메인 페이지)
 - 빅데이터 분석 관련 학습 내용 업로드 (데이터 분석)
@@ -29,6 +32,12 @@
 - (예정) 주문내역 확인 가능한 MYPAGE(마이 페이지) 
 - (예정) Interceptor를 적용한 회원가입, 로그인 구현 ▶ 추후 spring security 도전
 
-
 #### 기술스택 : 
-- Java, Spring, JavaScript, HTML, CSS, Mybatis, Mysql, jQuery, Ajax, Apache Tomcat, Eclipse etcs
+![JAVA](https://img.shields.io/badge/JAVA-DD4B39?style=for-the-badge&logo=JAVA&logoColor=white)
+![Spring_Frame](https://img.shields.io/badge/Spring-6DB33F?style=for-the-badge&logo=Spring&logoColor=white)
+![JQuery](https://img.shields.io/badge/JQuery-0769AD?style=for-the-badge&logo=JQuery&logoColor=white)
+![MySql](https://img.shields.io/badge/MySql-4479A1?style=for-the-badge&logo=MySql&logoColor=white)
+![mybatis](https://img.shields.io/badge/mybatis-CA4245?style=for-the-badge&logo=mybatis&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=JavaScript&logoColor=white)
+![Eclipse](https://img.shields.io/badge/Eclipse-005571?style=for-the-badge&logo=Eclipse&logoColor=white)
+
