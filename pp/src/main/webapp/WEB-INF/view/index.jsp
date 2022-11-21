@@ -456,9 +456,9 @@ function test() {
 							<li id="portfolio5_submenu" onclick="clickMenu('portfolio5', 'REVIEW', '/portfolio/board/index.do', false)">REVIEW [댓글]</li>
 							<li id="portfolio1_submenu" onclick="clickMenu('portfolio1', 'NOTICE', '/portfolio/notice/index.do', false)">NOTICE</li>
 							<li id="portfolio4_submenu" onclick="clickMenu('portfolio4', 'Q&A', '/portfolio/reply/index.do', false)">Q&A [답변]</li>
-							<li id="portfolio6_submenu" onclick="clickMenu('portfolio9', 'CART', '/portfolio/cart/index.do', false)">CART</li>
-							<li id="portfolio6_submenu" onclick="clickMenu('portfolio8', 'MYPAGE', '/portfolio/mypage/index.do', false)">MYPAGE</li>
-							<li id="portfolio6_submenu" onclick="clickMenu('portfolio6', 'MEMBER', '/portfolio/member/index.do', false)">MEMBER</li>
+							<li id="portfolio6_submenu" onclick="clickMenu('portfolio6', 'CART', '/portfolio/cart/index.do', false)">CART</li>
+							<li id="portfolio8_submenu" onclick="clickMenu('portfolio8', 'MYPAGE', '/portfolio/mypage/index.do', false)">MYPAGE</li>
+							<li id="portfolio3_submenu" onclick="clickMenu('portfolio3', 'MEMBER', '/portfolio/member/index.do', false)">MEMBER</li>
 							<!-- <li id="portfolio3_submenu" onclick="clickMenu('portfolio3', 'Q&A', '/portfolio/qna/index.do', false)">Q&A</li> -->
 						</ul>
 					</dd>

@@ -449,8 +449,9 @@ Kakao.Share.createDefaultButton({
 <!-- 아임포트 api 적용 -->
 <script>
 
-function goOrder(gallery_no){ 
+function goOrder(price, gallery_title){ 
 if (confirm("주문결제창으로 이동합니다.")){
+	console.log(price);
 
 	var con = true;
 	var IMP = window.IMP;      
@@ -460,7 +461,7 @@ if (confirm("주문결제창으로 이동합니다.")){
 		pay_method: 'card', // 지불 수단
 		merchant_uid: 'merchant_' + new Date().getTime(), //가맹점에서 구별할 수 있는 고유한id
 		name: gallery_title,  // 상품명
-		amount: 123// 가격
+		amount: price// 가격
 		//buyer_email: "${loginInfo.guest_email}",//로그인 세션에 저장되어있는 이메일
 		//buyer_name: "${loginInfo.guest_name}",//로그인 세션에 저장되어있는 이름
 		//buyer_tel: "${loginInfo.guest_hp}",//로그인 세션에 저장되어있는 전화번호
@@ -496,7 +497,7 @@ if (confirm("주문결제창으로 이동합니다.")){
 					    		   }
 					       })
 					     } else {
-					       alert("결제에 실패하였습니다.\n 다시 시도해주세요");
+					       alert("결제에 실패하였습니다. 다시 시도해주세요");
 					       window.location.reload();
 					      con =false;
 					  } 
@@ -505,6 +506,7 @@ if (confirm("주문결제창으로 이동합니다.")){
 }  
 
 </script>
+
 
 <!-- 갤러리 상세 ajax 구현 시작 -->
 <script>
@@ -519,6 +521,7 @@ if (confirm("주문결제창으로 이동합니다.")){
     		success : function(result){
     			console.log(result.filename_org);
     			console.log(result.gallery_title);
+    	
     			
     			var info = '';
     				info += '<div  class="user-information-text">';
@@ -528,7 +531,7 @@ if (confirm("주문결제창으로 이동합니다.")){
     				info += '	<br>'
     				info += '	<h1 style="display:inline-block; width:100%; vertical-align:middle;"><b style="display:block;">' + result.gallery_title + '</b><span style="font-size:20px;"> ￦ ' + result.price.toLocaleString('ko-KR') + '원 </span>'; 
     				info += '	<span style="float:right; margin-block:15px">';
-    				info += ' 	<input type="button" id="buyNow" value="  BUY NOW  " onclick="goOrder('+ result.gallery_no+');">'
+    				info += ' 	<input type = "button" id = "buyNow" value ="  BUY NOW  " onclick = "goOrder(\''+ result.price +'\' , \'' + result.gallery_title + '\');">';
     				info += ' 	<input type="button" id="cart" value="  ADD TO CART  " onclick="goCart('+ result.gallery_no+');"> </span></h1>';
     				info += '	<div>';
     				info += '		<hr class="lightbox-splitter"/>';
@@ -560,6 +563,15 @@ if (confirm("주문결제창으로 이동합니다.")){
 		<h2><b>SHOP__BeMyMuse</b></h2>
 		<h4 style="float:right">갤러리게시판</h4>
 	</div>
+	<div class="top_search" style="border-box:2px;">
+	<fieldset style="border: none; width: 150px; display:block; margin-inline-start:2px; margin-inline-end:2px; padding-block-start:0.35em; padding-inline-start: 0.75em; padding-inline-end: 0.75em;     padding-block-end: 0.625em; min-inline-size: min-content; ">
+		<!-- <label>검색 |</label> -->
+			<input id="keyword" name="keyword" fw-filter="" fw-label="검색어" fw-msg="" class="inputTypeText" placeholder="search" onmousedown="SEARCH_BANNER.clickSearchForm(this)" value="" type="text" style="border: 0; height: 25px; line-height: 25px; margin-right: 3px; width: 100px; background: none; border-bottom: 1px solid #bcbcbc;" />
+			<img src="/pp/img/btn.png" alt="search" /><button onclick="SEARCH_BANNER.submitSearchBanner(this); return false;" style="border-bottom: 1px solid #bcbcbc;     position: absolute;">
+			
+		</button>
+	</fieldset>
+	</div>
 	</div>
 	<div class="btnSet">
 		<div class="right">
@@ -573,8 +585,8 @@ if (confirm("주문결제창으로 이동합니다.")){
 				<div class="paper-holder">
 					<a> <img width="190" src="/pp/upload/${list.filename_real}" /></a>
 				</div>
-				<p class="paper-description">${list.gallery_title } 
-					<span style="float:right">￦<fmt:formatNumber value="${list.price }" pattern="#,###" />원</span>
+				<p class="paper-description" >${list.gallery_title } 
+					<span style="float:right" class="price">￦<fmt:formatNumber value="${list.price }" pattern="#,###" />원</span>
 				</p>
 				<div class="paper-content">
 					<a class="paper-link"> <img src="https://placekitten.com/30/30" />

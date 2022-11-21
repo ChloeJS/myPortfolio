@@ -53,7 +53,7 @@ a:hover{transition: 0.5s !important;}
 #menuWrap .gnb dt.on{background:#D08180 url(<%=util.Property.contextPath%>/img/menu_on.png) no-repeat 20px center; color:#fff;}
 #menuWrap .gnb dd{background:#e6e6e6; padding:10px 20px; display:none;}
 #menuWrap .gnb dd li{background:url(<%=util.Property.contextPath%>/img/menu_2dep_off.png) no-repeat 25px center; padding:4px; padding-left:40px; font-size:15px;}
-#menuWrap .gnb dd li.on{background:url(<%=util.Property.contextPath%>/img/menu_2dep_on.png) no-repeat 25px center; color:<%=util.Property.color%>; font-size: 16px; font-weight: 400;}
+#menuWrap .gnb dd li.on{background:url(<%=util.Property.contextPath%>/img/menu_2dep_on.png) no-repeat 25px center; color:#B24040; font-size: 16px; font-weight: 400;}
 #menuWrap .menuclose{position:absolute; left:219px; top:50%; margin-top:-67px; z-index:2; cursor:pointer;}
 #menuWrap  .copy{color:#74767b; font-size:12px; font-weight:100; padding:20px;}
 
@@ -87,7 +87,7 @@ a:hover{transition: 0.5s !important;}
 ================================================== */
 .main {position:relative; width:100%; overflow:hidden; margin-top:22px; }
 .main .box{border:1px solid #dddddd; padding:15px 25px 20px; margin-bottom:30px; position:relative; width:100%; }
-.main .box h2{color:<%=util.Property.color%> !important; font-size:18px; font-weight:600;}
+.main .box h2{color:#B24040 !important; font-size:18px; font-weight:600;}
 
 .scheduleSearch > div{padding-top:10px; clear:both;}
 .scheduleSearch .date input[type=text]{width:160px;}
