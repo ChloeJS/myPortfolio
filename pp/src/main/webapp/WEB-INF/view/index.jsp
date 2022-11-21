@@ -307,7 +307,7 @@ function test() {
 		<ul class="topmenu">
 			<li class="logout"></li>
 			<li >
-				<a href="https://github.com/ChloeJS/project_hotel" target="_blank" style="float:right; padding-right:30px; padding-top:10px;">
+				<a href="https://github.com/ChloeJS/myPortfolio" target="_blank" style="float:right; padding-right:30px; padding-top:10px;">
 				<img src="<%=util.Property.contextPath%>/img/github icon.png" width="10%" style="float:right; padding-top:30px;">
 				</a>
 			</li>

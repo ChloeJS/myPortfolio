@@ -450,7 +450,7 @@ Kakao.Share.createDefaultButton({
 <script>
 
 function goOrder(gallery_no){ 
-if (confirm("주문결제하시겠습니까?")){
+if (confirm("주문결제창으로 이동합니다.")){
 
 	var con = true;
 	var IMP = window.IMP;      
@@ -459,7 +459,7 @@ if (confirm("주문결제하시겠습니까?")){
 		pg: 'html5_inicis', // PG사 선택
 		pay_method: 'card', // 지불 수단
 		merchant_uid: 'merchant_' + new Date().getTime(), //가맹점에서 구별할 수 있는 고유한id
-		name: "qweqwe",  // 상품명
+		name: gallery_title,  // 상품명
 		amount: 123// 가격
 		//buyer_email: "${loginInfo.guest_email}",//로그인 세션에 저장되어있는 이메일
 		//buyer_name: "${loginInfo.guest_name}",//로그인 세션에 저장되어있는 이름
