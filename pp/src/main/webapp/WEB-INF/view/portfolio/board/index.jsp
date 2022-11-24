@@ -48,7 +48,7 @@
 						<tr>
 							<td>${totalCount - status.index - ((pageInfo.pageNum - 1) * pageInfo.pageRow) }</td>
 							<td><a href="view.do?no=${vo.no }&pageNum=${pageInfo.pageNum}">${vo.title }  [${vo.comment_count}]</a></td>
-							<td>${vo.user_name} </td>
+							<td>회원1 </td>
 							<td>${vo.regdate } </td>
 							<td>${vo.viewcount }</td>
 						</tr>

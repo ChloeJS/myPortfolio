@@ -137,4 +137,16 @@ public class GalleryController {
 			return "common/alert";
 		}
 	}
+	
+	// 팀프로젝트 ppt 출력
+	@GetMapping("/project/ppt.do")
+	public String ppt() {
+		return "project/ppt";
+	}
+	
+	// 개인프로젝트 포폴 출력
+	@GetMapping("/myinfo/myppt.do")
+	public String myppt() {
+		return "myinfo/myppt";
+	}
 }

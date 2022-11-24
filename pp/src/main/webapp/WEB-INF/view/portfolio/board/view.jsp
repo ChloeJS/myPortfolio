@@ -143,16 +143,25 @@ function delComment(comment_no){
 							<th>제목</th>
 							<td>${view.title }</td>
 							<th>작성자</th>
-							<td>${view.user_name }</td>
+							<td>회원1</td>
 						</tr>
 						<tr>
 							<th>내용</th>
-							<td colspan="3">${view.content }</td>
+							<c:forEach var="fileList" items="${fileList }" varStatus="fvoStatus">
+							<td colspan="3">${view.content }
+							<br>
+							<div class="paper-holder">
+								<a> <img width="190" src="/pp/upload/${fileList.filename_real}" /></a>
+							</div>
+							</c:forEach>
+							</td>
+							
 						</tr>
 						<tr>
 							<th>첨부파일</th>
 							<td colspan="3">
 							<c:forEach var="fileList" items="${fileList }" varStatus="fvoStatus">
+							
 								<a href="/pp/download.jsp?oName=${fileList.filename_org}&sName=${fileList.filename_real}" target="_blank"> ${fileList.filename_org} </a>
 							</c:forEach></td>
 						</tr>

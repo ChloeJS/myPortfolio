@@ -57,7 +57,7 @@ function goDelete(no) {
 							<tr>
 								<td>${totalCount - status.index - ((pageInfo.pageNum - 1) * pageInfo.pageRow) }</td>
 								<td><a href="view.do?notice_no=${vo.notice_no }">${vo.notice_title }</a></td>
-								<td>${vo.notice_writer }</td>
+								<td>★관리자★</td>
 								<td><fmt:formatDate pattern="yyyy-MM-dd hh:MM:ss" value="${vo.notice_regdate }" /></td>
 								<td>${vo.notice_viewcount }</td>
 								<td><a href="javascript:;" class="btn" onclick="goDelete(${vo.notice_no})">삭제</a></td>

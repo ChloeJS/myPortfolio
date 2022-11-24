@@ -24,7 +24,7 @@
 	                     <c:forEach var="vo" items="${commList}">
 	                         <tr>
 	                             <td class="txt_l" style="text-align:left;">
-	                                  <p style="padding-bottom:5px;display: inline-block">뮤즈회원
+	                                  <p style="padding-bottom:5px;display: inline-block">★관리자★
 		                              <p style="float:right">${vo.comment_regdate }
 		                              	<a href="javascript:delComment(${vo.comment_no });">삭제 |</a> 
 		                             	<a id='updateCom' href="javascript:updateComment(${vo.comment_no });">수정 |</a>

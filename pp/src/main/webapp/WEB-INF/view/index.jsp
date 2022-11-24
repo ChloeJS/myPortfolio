@@ -323,12 +323,13 @@ function test() {
 						<dt><a href="javascript:;">나의 정보</a></dt>
 						<dd class="frist"><a href="javascript:;" onclick="clickMenu('myinfo1', '프로필', '/myinfo/index.do', false)">프로필</a></dd>
 						<dd><a href="javascript:;" onclick="clickMenu('myinfo2', '자기소개', '/myinfo/myinfo.do', false)">자기소개</a></dd>
+						<dd><a href="javascript:;" onclick="clickMenu('myinfo3', '자기소개', '/myinfo/myppt.do', false)">개인프로젝트</a></dd>
 					</dl>
 					<dl style="width:13.666%;">
 						<dt><a href="javascript:;">팀프로젝트</a></dt>
-						<dd class="frist"><a href="javascript:;" onclick="clickMenu('project1', '프로젝트 소개', 'http://localhost:8080/hotel/main/main.do', false)">프로젝트 소개</a></dd>
-						<dd><a href="javascript:;" onclick="clickMenu('project2', '프로젝트 기획', '/project/plan.do', false)">프로젝트 기획</a></dd>
-						<dd><a href="javascript:;" onclick="clickMenu('project3', '프로젝트 설계', '/project/architecture.do', false)">프로젝트 설계</a></dd>
+						<dd class="frist"><a href="javascript:;" onclick="clickMenu('project1', '프로젝트 소개', '/project/ppt.do', false)">프로젝트 소개</a></dd>
+						<!-- <dd><a href="javascript:;" onclick="clickMenu('project2', '프로젝트 기획', '/project/plan.do', false)">프로젝트 기획</a></dd>
+						<dd><a href="javascript:;" onclick="clickMenu('project3', '프로젝트 설계', '/project/architecture.do', false)">프로젝트 설계</a></dd> -->
 					</dl>
 					<!-- <dl style="width:13.666%;">
 						<dt><a href="javascript:;">Front-End</a></dt>
@@ -380,8 +381,9 @@ function test() {
 	               	</li>
                   </fieldset>
                   <ul>
-                     <li class="homepage"><a href="/pp/portfolio/member/join.do" >JOIN${logininfo.name}</a></li>
-                     <li class="homepage"><a href="/pp/portfolio/member/join.do" >FIND Id/Pwd</a></li>
+                     <li class="homepage"><a href="/pp/portfolio/user/join.do" >JOIN${logininfo.name}</a></li>
+                     <li class="homepage"><a href="/pp/portfolio/user/findId.do" >FIND Id</a></li>
+                     <li class="homepage"><a href="/pp/portfolio/user/findPwd.do" >FIND Pwd</a></li>
                   </ul>
                </form>
 			</div>
@@ -399,15 +401,16 @@ function test() {
 					<dd class="gnb_submenu">
 						<ul>	
 							<li id="myinfo1_submenu" onclick="clickMenu('myinfo1', '프로필', '/myinfo/index.do', false)">프로필</li>
-							<li id="myinfo2_submenu" onclick="clickMenu('myinfo2', '자기소개', '/myinfo/myinfo.do', false)">자기소개</li>
+							<!-- <li id="myinfo2_submenu" onclick="clickMenu('myinfo2', '자기소개', '/myinfo/myinfo.do', false)">자기소개</li> -->
+							<li id="myinfo3_submenu" onclick="clickMenu('myinfo3', '자기소개', '/myinfo/myppt.do', false)">김지수 포트폴리오</li>
 						</ul>
 					</dd>
-					<dt id="project" class="gnb_menu">[팀프로젝트] "둘이놀자" </dt>
+					<dt id="project" class="gnb_menu">[팀프로젝트]</dt>
 					<dd class="gnb_submenu">
 						<ul>	
-							<li id="project1_submenu" onclick="clickMenu('project1', '프로젝트 소개', '/hotel/main/main.do', false)">[둘이놀자]</li>
-							<li id="project1_submenu" onclick="clickMenu('project2', '프로젝트 소개', '/project/index.do', false)">프로젝트 소개</li>
-							<li id="project2_submenu" onclick="clickMenu('project3', '프로젝트 기획', '/project/plan.do', false)">프로젝트 기획</li>
+							<li id="project1_submenu" onclick="clickMenu('project1', '프로젝트 소개', '/project/ppt.do', false)">[둘이놀자]</li>
+							<!-- <li id="project1_submenu" onclick="clickMenu('project2', '프로젝트 소개', '/project/index.do', false)">프로젝트 소개</li>
+							<li id="project2_submenu" onclick="clickMenu('project3', '프로젝트 기획', '/project/plan.do', false)">프로젝트 기획</li> -->
 						</ul>
 					</dd>
 					<!-- <dt id="front" class="gnb_menu">Front-End</dt>
