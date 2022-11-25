@@ -14,4 +14,6 @@ public class UserController {
 	public String mypage(HttpSession sess, Model model) {
 		return null;
 	}
+	
+	
 }

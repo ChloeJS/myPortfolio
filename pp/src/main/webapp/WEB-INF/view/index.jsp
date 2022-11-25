@@ -322,7 +322,7 @@ function test() {
 					<dl style="width:13.666%;">
 						<dt><a href="javascript:;">나의 정보</a></dt>
 						<dd class="frist"><a href="javascript:;" onclick="clickMenu('myinfo1', '프로필', '/myinfo/index.do', false)">프로필</a></dd>
-						<dd><a href="javascript:;" onclick="clickMenu('myinfo2', '자기소개', '/myinfo/myinfo.do', false)">자기소개</a></dd>
+						<!-- <dd><a href="javascript:;" onclick="clickMenu('myinfo2', '자기소개', '/myinfo/myinfo.do', false)">자기소개</a></dd> -->
 						<dd><a href="javascript:;" onclick="clickMenu('myinfo3', '자기소개', '/myinfo/myppt.do', false)">개인프로젝트</a></dd>
 					</dl>
 					<dl style="width:13.666%;">
