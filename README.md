@@ -1,7 +1,7 @@
 
 [![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2FChloeJS%2FmyPortfolio&count_bg=%23BA3042&title_bg=%23E8AAAA&icon=checkmarx.svg&icon_color=%23841E1E&title=welcome&edge_flat=true)](https://hits.seeyoufarm.com)
 
-## 준비된 백엔드 개발자 (Java, Spring) | Soft Skill 인재 : 김지수
+## "편견 없이", "배려하며", "적극적인" 협업이 가능한 개발자 : 김지수
 <br><br>
 ### 📌 개인 프로젝트 : WELCOME, JISU's & BMM
 <br>
