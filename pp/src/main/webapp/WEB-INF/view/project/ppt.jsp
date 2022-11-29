@@ -24,7 +24,7 @@
 	<div id="area">
 		<li> 조금만 기다려주시면 화면이 켜집니다. </li>
 		<br>
-		<iframe id="ppt" src="https://onedrive.live.com/embed?cid=15723338101708B5&resid=15723338101708B5%2114181&authkey=AH6V-HxzBRs-pE0&em=2" width="402" height="327" frameborder="0" scrolling="no"></iframe>
+			<iframe id="ppt" src="https://onedrive.live.com/embed?cid=15723338101708B5&resid=15723338101708B5%2114188&authkey=AFzFuSbURL-L5Q4&em=2" width="402" height="327" frameborder="0" scrolling="no"></iframe>
 	</div>
 </body>
 </html>
